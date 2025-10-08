@@ -196,17 +196,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 300px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.8);
 }
 
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
 
 .hero-wave {
     position: absolute;
@@ -669,6 +668,11 @@ section {
     
     .hero-buttons {
         justify-content: center;
+    }
+    
+    .profile-image {
+        width: 250px;
+        height: 250px;
     }
     
     .timeline::before {
