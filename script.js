@@ -49,7 +49,7 @@ window.addEventListener('scroll', () => {
 
 // Animation on scroll
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.timeline-item, .biodata-card, .skill-category, .contact-form');
+    const elements = document.querySelectorAll('.timeline-item, .biodata-card, .achievement-card, .experience-card, .contact-form');
     
     elements.forEach(element => {
         const elementPosition = element.getBoundingClientRect().top;
@@ -63,7 +63,7 @@ function animateOnScroll() {
 
 // Set initial state for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.timeline-item, .biodata-card, .skill-category, .contact-form');
+    const elements = document.querySelectorAll('.timeline-item, .biodata-card, .achievement-card, .experience-card, .contact-form');
     
     elements.forEach(element => {
         element.classList.add('fade-in');
@@ -77,77 +77,3 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', animateOnScroll);
 
 // Add active class to current section in navigation
-function setActiveNavLink() {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-        
-        if (window.scrollY >= (sectionTop - navbarHeight - 50)) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
-window.addEventListener('scroll', setActiveNavLink);
-
-// Form submission handling
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form values
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const message = this.querySelector('textarea').value;
-    
-    // Simple validation
-    if (name && email && message) {
-        // Show success message
-        alert(`Terima kasih ${name}! Pesan Anda telah berhasil dikirim.`);
-        
-        // Reset form
-        this.reset();
-    } else {
-        alert('Harap lengkapi semua field!');
-    }
-});
-
-// Animate skill bars when they come into view
-function animateSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-level');
-    
-    skillBars.forEach(bar => {
-        const barPosition = bar.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
-        
-        if (barPosition < screenPosition) {
-            // The width is already set via inline style in HTML
-            bar.style.transition = 'width 1.5s ease-in-out';
-        }
-    });
-}
-
-window.addEventListener('scroll', animateSkillBars);
-
-// Add hover effect to cards
-document.querySelectorAll('.biodata-card, .skill-category, .timeline-content').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
